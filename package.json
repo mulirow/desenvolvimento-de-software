@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "@lexical/react": "^0.16.1",
+    "@liveblocks/client": "^2.16.2",
+    "@liveblocks/react": "^2.16.2",
+    "@liveblocks/react-lexical": "^2.16.2",
+    "@liveblocks/react-ui": "^2.16.2",
+    "lexical": "^0.16.1",
+    "next": "^15.1.6",
+    "react": "^19.0.0-rc-66855b96-20241106",
+    "react-dom": "^19.0.0-rc-66855b96-20241106"
   },
   "devDependencies": {
     "@types/node": "^20",
