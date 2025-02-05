@@ -1,74 +1,155 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 export default function DocumentEditor() {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [messages, setMessages] = useState([]);
+  interface Message {
+    text: string;
+    isUser: boolean;
+  }
+
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
+  const [isEditorVisible, setIsEditorVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [editorContent, setEditorContent] = useState(""); // Store editor text
+  const editorRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const updateDimensions = () => {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
+  // Toggle between Text Editor and Chat
+  const toggleEditor = () => {
+    setIsEditorVisible(!isEditorVisible);
+  };
 
-      const width = screenWidth * 0.5;
-      const height = screenHeight * 0.90;
+  // Function to handle text input in editor
+  const handleEditorChange = () => {
+    if (editorRef.current) {
+      setEditorContent(editorRef.current.innerText);
+    }
+  };
 
-      setDimensions({ width, height });
-    };
+  const invokeLLM = async () => {
+    if (input.trim() === "") return;
+  
+    try {
+      setLoading(true);
+  
+      // Get the latest editor content
+      const editorText = editorRef.current?.innerText || "";
+  
+      // Constructing a structured prompt
+      const structuredPrompt = `The following text is currently in an editor:\n\n"${editorText}"\n\nNow, based on this, ${input}`;
+  
+      const payload = {
+        prompt: structuredPrompt,
+      };
+  
+      console.log("Payload being sent:", payload); // Debugging log
+  
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: input, isUser: true },
+      ]);
+  
+      const response = await fetch("/api/googleai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+  
+      const data = await response.json();
+      console.log("Response received:", data); // Debugging log
+  
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: data.result, isUser: false },
+      ]);
+    } catch (error) {
+      console.error("Error invoking LLM:", error);
+    } finally {
+      setLoading(false);
+      setInput("");
+    }
+  };
+  
 
-    updateDimensions();
-    window.addEventListener("resize", updateDimensions);
-
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
+  // Handle Enter key press in the chat input
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      invokeLLM();
+    }
+  };
 
   return (
-    <div className="flex min-h-screen bg-gray-900-100 p-4">
-      {/* Document Editor (Left Side) */}
-      <div className="flex flex-col items-center justify-center flex-grow">
-      <h2 className="text-lg font-semibold text-white mb-2 text-center">Text Editor</h2>
-        <div
-          className="bg-zinc-500 shadow-lg border border-gray-200 p-6 overflow-auto"
-          contentEditable
-          style={{
-            width: `${dimensions.width}px`,
-            height: `${dimensions.height}px`,
-          }}
-        ></div>
-      </div>
+    <div className="relative flex flex-col md:flex-row min-h-screen bg-white p-4 max-w-full gap-12">
+      {/* Toggle Button (Only visible on small screens) */}
+      <button
+        className="mb-4 self-center md:hidden bg-blue-500 text-black py-2 px-4 rounded-md hover:bg-blue-600"
+        onClick={toggleEditor}
+      >
+        {isEditorVisible ? "Show Chat" : "Show Editor"}
+      </button>
 
-      {/* Chat Container (Right Side) */}
-      <div className="bg-slate-500 w-1/4 flex flex-col border border-gray-300 shadow-lg rounded-lg p-4 ml-4">
-      <h2 className="text-lg font-semibold text-white mb-2 text-center">Chat</h2>
-        {/* Chat Messages */}
-        <div className="flex-grow overflow-y-auto h-96 border-b border-gray-300 p-2 space-y-2">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={"p-2 rounded-md text-sm"}
-            >
-              {msg}
-            </div>
-          ))}
+      {/* Main Container with Equal Heights */}
+      <div className="flex flex-col md:flex-row w-full h-[85vh] gap-4">
+        {/* Text Editor Section */}
+        <div
+          className={`flex flex-col w-full md:w-[70%] h-full transition-all mr-16 ${
+            isEditorVisible ? "block" : "hidden"
+          } md:flex`}
+        >
+          <h2 className="text-lg font-semibold text-black mb-2 text-center">
+            Text Editor
+          </h2>
+          <div
+            ref={editorRef}
+            className="bg-slate-200 shadow-lg border border-gray-200 text-black p-6 overflow-auto flex-grow w-full h-full rounded-lg"
+            contentEditable
+            onInput={handleEditorChange} // Track changes in the editor
+          ></div>
         </div>
 
-        {/* Chat Input */}
-        <div className="flex items-center mt-2">
-          <input
-            type="text"
-            className="bg-gray-900 flex-grow p-2 border rounded-md"
-            placeholder="Type a message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter"}
-          />
-          <button
-            className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-          >
-            Send
-          </button>
+        {/* Chat Container */}
+        <div
+          className={`bg-slate-200 w-full md:w-[30%] h-full flex flex-col border border-gray-300 shadow-lg rounded-lg p-6 transition-all ${
+            isEditorVisible ? "hidden" : "block"
+          } md:flex`}
+        >
+          <h2 className="text-lg font-semibold text-black mb-2 text-center">
+            Chat
+          </h2>
+          {/* Chat Messages */}
+          <div className="flex-grow overflow-y-auto border-b border-gray-300 p-2 space-y-2">
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`p-2 rounded-md text-sm ${
+                  msg.isUser
+                    ? "bg-light_blue text-white text-left"
+                    : "bg-pink text-white"
+                }`}
+              >
+                {msg.text}
+              </div>
+            ))}
+          </div>
+
+          {/* Chat Input */}
+          <div className="flex mt-2 relative">
+            <input
+              type="text"
+              className="bg-slate-300 flex-grow p-2 border rounded-md w-full h-auto text-black pr-8"
+              value={loading ? "..." : input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              disabled={loading}
+            />
+            <button
+              className="ml-2 bg-light_blue text-white px-4 rounded-md hover:bg-blue-600"
+              onClick={invokeLLM}
+              disabled={loading}
+            >
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
