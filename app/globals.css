@@ -35,3 +35,24 @@ body {
 [data-lexical-editor] p {
   margin: 0.8em 0;
 }
+
+/* styles.css ou global.css */
+.editor {
+  border: 1px solid #ccc;
+  padding: 8px;
+  min-height: 150px;
+  position: relative; /* Necessário para o posicionamento do placeholder */
+}
+
+.editor .ContentEditable {
+  min-height: 150px;
+  outline: none;
+}
+
+.placeholder {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: #888;
+  pointer-events: none; /* Permite clicar na área de trás */
+}

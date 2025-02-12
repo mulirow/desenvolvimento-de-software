@@ -10,9 +10,31 @@ import {
   FloatingToolbar,
 } from "@liveblocks/react-lexical";
 import { Threads } from "./Threads";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { useEffect } from "react";
+import { $getRoot } from "lexical";
 
-export function Editor() {
-  // Wrap your Lexical config with `liveblocksConfig`
+interface EditorProps {
+  onChange?: (text: string) => void;
+}
+
+function OnChangePlugin({ onChange }: { onChange: (text: string) => void }) {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    return editor.registerUpdateListener(({ editorState }) => {
+      editorState.read(() => {
+        const root = $getRoot();
+        const textContent = root.getTextContent();
+        onChange(textContent);
+      });
+    });
+  }, [editor, onChange]);
+
+  return null;
+}
+
+export function Editor({ onChange }: EditorProps) {
   const initialConfig = liveblocksConfig({
     namespace: "Demo",
     onError: (error: unknown) => {
@@ -25,10 +47,11 @@ export function Editor() {
     <LexicalComposer initialConfig={initialConfig}>
       <div className="editor">
         <RichTextPlugin
-          contentEditable={<ContentEditable />}
+          contentEditable={<ContentEditable className="ContentEditable" />}
           placeholder={<div className="placeholder">Start typing here…</div>}
           ErrorBoundary={LexicalErrorBoundary}
         />
+        {onChange && <OnChangePlugin onChange={onChange} />}
         <LiveblocksPlugin>
           <Threads />
           <FloatingToolbar />
