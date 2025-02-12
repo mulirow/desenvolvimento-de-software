@@ -33,10 +33,10 @@ export default function DocumentEditor() {
       setLoading(true);
   
       // Get the latest editor content
-      const editorText = editorRef.current?.innerText || "";
+      const editorText = editorContent;
   
       // Constructing a structured prompt
-      const structuredPrompt = `The following text is currently in an editor:\n\n"${editorText}"\n\nNow, based on this, ${input}`;
+      const structuredPrompt = `The following text is currently in an editor:\n\n"${editorText}"\n\nNow, based on this provide opinions according to input, ${input}`;
   
       const payload = {
         prompt: structuredPrompt,
@@ -64,6 +64,10 @@ export default function DocumentEditor() {
       ]);
     } catch (error) {
       console.error("Error invoking LLM:", error);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: "Erro ao processar a solicitação. Tente novamente.", isUser: false },
+      ]);
     } finally {
       setLoading(false);
       setInput("");
