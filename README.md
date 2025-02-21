@@ -54,6 +54,14 @@ npm run dev
 ```
 Access via LocalHost
 
+## Architectural Decision Records (ADR)
+
+* [ADR-0000](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0000-use-markdown-adr.md) - Use Markdown to Document ADRs
+* [ADR-0001](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0001-use-nextjs-for-front-framework.md) - Use Next.js as the frontend framework
+* [ADR-0002](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0002-use-mongodb-for-database.md) - Adopt MongoDB as the database technology
+* [ADR-0003](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0003-use-google-ai-studio-for-ai-api.md) - Integration with Google AI Studio
+* [ADR-0004](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0004-use-tailwind-css-for-front-stylization.md) - Use Tailwind CSS for UI stylization
+
 ## Support Information
 
 If you encounter any issues or have questions, feel free to reach out via:
