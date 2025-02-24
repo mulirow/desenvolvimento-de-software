@@ -12,7 +12,7 @@ export default function HomePage() {
         <button
           className="min-w-[18.75rem] bg-white rounded-[0.625rem] shadow-md flex flex-col overflow-hidden p-2 
                      hover:shadow-lg active:shadow-sm transition-shadow"
-          onClick={() => router.push("/collab")}
+          onClick={() => router.push("/editor")}
         >
           <div className="w-full h-[150px] bg-gray-300"></div>
           <div className="flex items-center justify-between p-2">
