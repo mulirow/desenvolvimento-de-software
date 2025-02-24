@@ -8,6 +8,7 @@
 🔹 [📋 Requirements](#requirements)
 🔹 [💾 Installation Instructions](#installation-instructions)
 🔹 [⚡ Usage Instructions](#usage-instructions)
+🔹 [🏛️ Architectural Decision Records (ADR)](#architectural-decision-records-adr)
 🔹 [📚 Support Information](#support-information)
 🔹 [🖼 Visuals](#visuals)
 🔹 [📌 Project Status](#project-status)
