@@ -77,7 +77,7 @@ Before you begin, ensure you have the following installed:
 
     Open your web browser and navigate to `http://localhost:3000` (or the port specified in your terminal).
 
-## Architectural Decision Records (ADR)
+## 🏛️ Architectural Decision Records (ADR)
 
 * [ADR-0000](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0000-use-markdown-adr.md) - Use Markdown to Document ADRs
 * [ADR-0001](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0001-use-nextjs-for-front-framework.md) - Use Next.js as the frontend framework
@@ -85,20 +85,20 @@ Before you begin, ensure you have the following installed:
 * [ADR-0003](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0003-use-google-ai-studio-for-ai-api.md) - Integration with Google AI Studio
 * [ADR-0004](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0004-use-tailwind-css-for-front-stylization.md) - Use Tailwind CSS for UI stylization
 
-## Support Information
+## 📚 Support Information
 
 If you encounter any issues or have questions, feel free to reach out via:
 
 •⁠  ⁠GitHub Issues
 •⁠  ⁠Email: [mbn2@cin.ufpe.br]
 
-## Project Status
+## 📌 Project Status
 
 #### Current Status: 🚀 In Progress
 
 This project is actively being developed. Stay tuned for new features!
 
-## Contribution Guidelines
+## 🤝 Contribution Guidelines
 
 To contribute, please follow these steps:
 
