@@ -1,21 +1,21 @@
-# 🕷 ArachWrite  
+# 🕷 ArachWrite
 
-**ArachWrite** is a collaborative text editor that integrates AI to assist writers. The AI provides suggestions, analyses, and revisions on texts in development, helping to improve the writing and script structure.  
+**ArachWrite** is a collaborative text editor that integrates AI to assist writers. The AI provides suggestions, analyses, and revisions on texts in development, helping to improve the writing and script structure.
 
-## 📖 Table of Contents  
+## 📖 Table of Contents
 
-🔹 [🚀 Technologies Used](#technologies-used)  
-🔹 [📋 Requirements](#requirements)  
-🔹 [💾 Installation Instructions](#installation-instructions)  
-🔹 [⚡ Usage Instructions](#usage-instructions)  
-🔹 [📚 Support Information](#support-information)  
-🔹 [🖼 Visuals](#visuals)  
+🔹 [🚀 Technologies Used](#technologies-used)
+🔹 [📋 Requirements](#requirements)
+🔹 [💾 Installation Instructions](#installation-instructions)
+🔹 [⚡ Usage Instructions](#usage-instructions)
+🔹 [📚 Support Information](#support-information)
+🔹 [🖼 Visuals](#visuals)
 🔹 [📌 Project Status](#project-status)
-🔹 [🤝 Contribution Guidelines](#contribution-guidelines) 
+🔹 [🤝 Contribution Guidelines](#contribution-guidelines)
 
-## 🚀 Technologies Used  
+## 🚀 Technologies Used
 
-The project was developed using the following technologies:  
+The project was developed using the following technologies:
 
 | 🛠 Technology  |
 |---------------|
@@ -28,16 +28,16 @@ The project was developed using the following technologies:
 
 ---
 
-## 📋 Requirements  
+## 📋 Requirements
 
-Before starting, make sure you have the following requirements:  
+Before starting, make sure you have the following requirements:
 
-- **Node.js** (latest LTS version recommended)  
-- **npm** (included with Node.js)  
+- **Node.js** (latest LTS version recommended)
+- **npm** (included with Node.js)
 
 ---
 
-## 💾 Installation Instructions  
+## 💾 Installation Instructions
 
 ```bash
 git clone https://github.com/mulirow/desenvolvimento-de-software.git
