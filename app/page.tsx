@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar />  {/* Navbar is now included at the top */}
+      <Navbar />  
       <div className="p-6 max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Collaborative Editor</h1>
         <Room>

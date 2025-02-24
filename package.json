@@ -18,8 +18,7 @@
     "lexical": "^0.16.1",
     "next": "^15.1.6",
     "react": "^19.0.0-rc-66855b96-20241106",
-    "react-dom": "^19.0.0-rc-66855b96-20241106",
-    "react-router-dom": "^7.2.0"
+    "react-dom": "^19.0.0-rc-66855b96-20241106"
   },
   "devDependencies": {
     "@types/node": "^20",
