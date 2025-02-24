@@ -30,29 +30,52 @@ The project was developed using the following technologies:
 
 ## 📋 Requirements
 
-Before starting, make sure you have the following requirements:
+Before you begin, ensure you have the following installed:
 
-- **Node.js** (latest LTS version recommended)
-- **npm** (included with Node.js)
+*   **Node.js:** (Latest LTS version recommended) - [https://nodejs.org/](https://nodejs.org/)
+*   **npm:** (Included with Node.js) -  Check version with `npm -v`
+*   **Git:** (For cloning the repository) - [https://git-scm.com/](https://git-scm.com/)
 
 ---
 
 ## 💾 Installation Instructions
 
-```bash
-git clone https://github.com/mulirow/desenvolvimento-de-software.git
-cd desenvolvimento-de-software
-```
+1.  **Clone the repository:**
 
-## Install Dependencies
-```bash
-npm install
-```
-## Usage Instructions
-```bash
-npm run dev
-```
-Access via LocalHost
+    ```bash
+    git clone https://github.com/mulirow/desenvolvimento-de-software.git
+    cd desenvolvimento-de-software
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Configure Environment Variables:**
+
+    *   Create a `.env` file in the root directory.
+    *   Add the necessary environment variables:
+
+        ```
+        MONGODB_URI=your_mongodb_connection_string
+        GOOGLEAI_API_KEY==your_google_ai_api_key
+        LIVEBLOCKS_SECRET_KEY=your_liveblocks_secret_key
+        NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY=your_liveblocks_public_key
+        ```
+
+## ⚡ Usage Instructions
+
+1.  **Start the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+2.  **Access the application:**
+
+    Open your web browser and navigate to `http://localhost:3000` (or the port specified in your terminal).
 
 ## Architectural Decision Records (ADR)
 
