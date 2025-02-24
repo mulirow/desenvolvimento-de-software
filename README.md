@@ -1,6 +1,6 @@
 # 🕷 ArachWrite
 
-**ArachWrite** is a collaborative text editor that integrates AI to assist writers. The AI provides suggestions, analyses, and revisions on texts in development, helping to improve the writing and script structure.
+**ArachWrite** is a collaborative text editor that integrates AI to assist writers. The AI provides suggestions, analyses, and revisions on texts in development, helping to improve writing and script structure. Imagine it as your AI writing assistant, woven right into your collaborative workspace!
 
 ## 📖 Table of Contents
 
@@ -88,6 +88,8 @@ Before you begin, ensure you have the following installed:
 
 ## 🏛️ Architectural Decision Records (ADR)
 
+This section documents the important architectural decisions made during the development of ArachWrite.
+
 * [ADR-0000](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0000-use-markdown-adr.md) - Use Markdown to Document ADRs
 * [ADR-0001](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0001-use-nextjs-for-front-framework.md) - Use Next.js as the frontend framework
 * [ADR-0002](https://github.com/mulirow/desenvolvimento-de-software/blob/master/adr/0002-use-mongodb-for-database.md) - Adopt MongoDB as the database technology
@@ -96,7 +98,7 @@ Before you begin, ensure you have the following installed:
 
 ## 📚 Support Information
 
-If you encounter any issues or have questions, feel free to reach out via:
+If you encounter any issues or have questions, please don't hesitate to reach out:
 
 •⁠  ⁠GitHub Issues
 •⁠  ⁠Email: [mbn2@cin.ufpe.br]
@@ -111,10 +113,15 @@ This project is actively being developed. Stay tuned for new features!
 
 To contribute, please follow these steps:
 
-1.⁠ ⁠Fork the repository.
-2.⁠ ⁠Create a new branch (⁠ git checkout -b feature-branch ⁠).
-3.⁠ ⁠Commit your changes (⁠ git commit -m 'Add new feature' ⁠).
-4.⁠ ⁠Push to the branch (⁠ git push origin feature-branch ⁠).
-5.⁠ ⁠Open a Pull Request.
+1.  **Fork the repository.**
+2.  **Create a new branch:** `git checkout -b dev/your-feature-name`
+3.  **Commit your changes:** `git commit -m 'feat: add your feature or fix'`
+4.  **Push to the branch:** `git push origin dev/your-feature-name`
+5.  **Open a Pull Request:**  Submit a pull request with a clear description of your changes.
 
-Please follow our coding guidelines and ensure your changes are well-documented.
+**Guidelines:**
+
+*   Follow our coding style and conventions.
+*   Write clear and concise commit messages.
+*   Ensure your code is well-documented.
+*   Test your changes thoroughly.
