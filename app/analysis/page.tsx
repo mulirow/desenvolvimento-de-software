@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
+import Navbar from "@/components/Navbar";  // Import Navbar
+
 
 export default function DocumentEditor() {
   interface Message {
@@ -83,6 +85,9 @@ export default function DocumentEditor() {
   };
 
   return (
+    <div>
+      <Navbar />
+  
     <div className="relative flex flex-col md:flex-row min-h-screen bg-white p-4 max-w-full gap-12">
       {/* Toggle Button (Only visible on small screens) */}
       <button
@@ -157,5 +162,6 @@ export default function DocumentEditor() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
