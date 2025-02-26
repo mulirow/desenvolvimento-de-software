@@ -1,93 +1,47 @@
 "use client";
-import { useState } from "react";
-import Navbar from "@/components/Navbar";  // Import Navbar
-import { Room } from "./Room";
-import { Editor } from "./Editor";
 
-export default function Home() {
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
-  const [editorContent, setEditorContent] = useState('');
-  const [scriptResponse, setScriptResponse] = useState('');
+import { useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
 
-  const invokeLLM = async () => {
-    if (prompt.trim() === '') return;
-
-    try {
-      const res = await fetch('/api/googleai', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt }),
-      });
-      const data = await res.json();
-      setResponse(data.result);
-    } catch (error) {
-      console.error('Error invoking LLM:', error);
-    } finally {
-      setPrompt('');
-    }
-  };
-
-  const analyzeScript = async () => {
-    if (editorContent.trim() === '') return;
-
-    const scriptPrompt = `Analise o seguinte roteiro e dê sua opinião sobre seu ritmo, fluidez e estrutura. O texto parece um bom roteiro? Se não, sugira melhorias. Considere que o roteiro pode ainda não estar completo. Texto:\n\n${editorContent}`;
-
-    try {
-      const res = await fetch('/api/googleai', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: scriptPrompt }),
-      });
-      const data = await res.json();
-      setScriptResponse(data.result);
-    } catch (error) {
-      console.error('Error analyzing script:', error);
-    }
-  };
+export default function HomePage() {
+  const router = useRouter();
 
   return (
     <div>
-      <Navbar />  
-      <div className="p-6 max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">Collaborative Editor</h1>
-        <Room>
-          <Editor onChange={(text: string) => setEditorContent(text)} />
-        </Room>
+      <Navbar />
+      <div className="w-screen h-screen bg-zinc-300 relative p-4">
+        <div className="relative inline-block">
+          <button
+            className="min-w-[18.75rem] bg-white rounded-[0.625rem] shadow-md flex flex-col overflow-hidden p-2 
+                     hover:shadow-lg active:shadow-sm transition-shadow"
+            onClick={() => router.push("/editor")}
+          >
+            <div className="w-full h-[150px] bg-gray-300"></div>
+            <div className="flex items-center justify-between p-2">
+              <div className="text-lg font-bold">projeto</div>
+            </div>
+          </button>
+
+          <button
+            className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center text-lg 
+                     transition-colors cursor-pointer absolute bottom-[17.5px] right-[10px] 
+                     hover:bg-black/20 active:bg-black/40"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            ⋮
+          </button>
+        </div>
 
         <button
-          onClick={analyzeScript}
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4"
+          className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center 
+                         text-2xl shadow-md fixed bottom-6 right-6 transition-all cursor-pointer
+                         hover:w-[3.25rem] hover:h-[3.25rem] hover:text-[1.75rem] hover:bg-blue-600 
+                         active:bg-blue-700"
         >
-          Analisar Roteiro
+          +
         </button>
-        {scriptResponse && (
-          <div className="mt-6 border border-gray-300 rounded p-4">
-            <h2 className="text-xl font-semibold mb-2">Opinião sobre o Roteiro:</h2>
-            <p>{scriptResponse}</p>
-          </div>
-        )}
-
-        <h1 className="text-3xl font-bold mb-4">GoogleAI API Demo</h1>
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter your prompt here"
-          rows={4}
-          className="w-full border border-gray-300 rounded p-2 mb-4 text-black"
-        />
-        <button
-          onClick={invokeLLM}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Submit
-        </button>
-        {response && (
-          <div className="mt-6 border border-gray-300 rounded p-4">
-            <h2 className="text-xl font-semibold mb-2">Response:</h2>
-            <p>{response}</p>
-          </div>
-        )}
       </div>
     </div>
   );
