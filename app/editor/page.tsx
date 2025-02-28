@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
+import { signIn, useSession } from 'next-auth/react';
 import { useState } from "react";
 import { Editor } from "./Editor";
 import { Room } from "./Room";
@@ -9,6 +10,13 @@ export default function Home() {
   const [response, setResponse] = useState('');
   const [editorContent, setEditorContent] = useState('');
   const [scriptResponse, setScriptResponse] = useState('');
+
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      signIn();
+    }
+  });
 
   const invokeLLM = async () => {
     if (prompt.trim() === '') return;
