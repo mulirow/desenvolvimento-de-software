@@ -11,7 +11,7 @@ export default function Home() {
   const [editorContent, setEditorContent] = useState('');
   const [scriptResponse, setScriptResponse] = useState('');
 
-  const { status } = useSession({
+  useSession({
     required: true,
     onUnauthenticated() {
       signIn();
