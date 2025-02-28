@@ -15,9 +15,11 @@
     "@liveblocks/react": "^2.16.2",
     "@liveblocks/react-lexical": "^2.16.2",
     "@liveblocks/react-ui": "^2.16.2",
+    "bcryptjs": "^3.0.2",
     "lexical": "^0.16.1",
     "mongoose": "^8.10.1",
     "next": "^15.1.6",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0-rc-66855b96-20241106",
     "react-dom": "^19.0.0-rc-66855b96-20241106"
   },
