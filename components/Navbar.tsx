@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";  
+import { usePathname } from "next/navigation";
 
 const Navbar: React.FC = () => {
-  const pathname = usePathname();  
+  const pathname = usePathname();
 
   return (
     <nav className="bg-gray-800 text-white p-4 flex justify-between">
@@ -11,13 +11,13 @@ const Navbar: React.FC = () => {
       <div className="space-x-4">
         <Link
           href="/"
-          className={`hover:underline ${pathname === "/" ? "text-light_blue" : ""}`} 
+          className={`hover:underline ${pathname === "/" ? "text-light_blue" : ""}`}
         >
           Home
         </Link>
         <Link
           href="/analysis"
-          className={`hover:underline ${pathname === "/analysis" ? "text-light_blue" : ""}`} 
+          className={`hover:underline ${pathname === "/analysis" ? "text-light_blue" : ""}`}
         >
           Analysis
         </Link>
