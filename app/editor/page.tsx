@@ -1,8 +1,8 @@
 "use client";
+import Navbar from "@/components/Navbar";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";  // Import Navbar
-import { Room } from "./Room";
 import { Editor } from "./Editor";
+import { Room } from "./Room";
 
 export default function Home() {
   const [prompt, setPrompt] = useState('');
