@@ -90,7 +90,7 @@ export default function Login() {
         </div>
         <div className="border-t border-gray-200 px-6 py-4">
           <p className="text-sm text-gray-600 text-center">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="text-indigo-500 hover:text-indigo-700 font-semibold">
               Register
             </Link>
