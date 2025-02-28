@@ -16,10 +16,10 @@ const Navbar: React.FC = () => {
           Home
         </Link>
         <Link
-          href="/analysis"
-          className={`hover:underline ${pathname === "/analysis" ? "text-light_blue" : ""}`}
+          href="/editor"
+          className={`hover:underline ${pathname === "/editor" ? "text-light_blue" : ""}`}
         >
-          Analysis
+          Editor
         </Link>
       </div>
     </nav>
