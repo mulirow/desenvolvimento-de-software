@@ -1,14 +1,22 @@
 "use client";
+import Navbar from "@/components/Navbar";
+import { signIn, useSession } from 'next-auth/react';
 import { useState } from "react";
-import Navbar from "@/components/Navbar";  // Import Navbar
-import { Room } from "./Room";
 import { Editor } from "./Editor";
+import { Room } from "./Room";
 
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [editorContent, setEditorContent] = useState('');
   const [scriptResponse, setScriptResponse] = useState('');
+
+  useSession({
+    required: true,
+    onUnauthenticated() {
+      signIn();
+    }
+  });
 
   const invokeLLM = async () => {
     if (prompt.trim() === '') return;
@@ -48,7 +56,7 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar />  
+      <Navbar />
       <div className="p-6 max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Collaborative Editor</h1>
         <Room>
