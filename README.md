@@ -32,6 +32,7 @@ The project was developed using the following technologies:
 | ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)       | Database for storing application data.          |
 | ![Google AI Studio](https://img.shields.io/badge/Google%20AI%20Studio-4285F4?style=for-the-badge&logo=google&logoColor=white) | AI Platform providing suggestions, analysis, and revisions.  |
 | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)         | Platform for deployment and hosting.            |
+| ![Cypress](https://img.shields.io/badge/Cypress-058A5E?style=for-the-badge&logo=cypress&logoColor=white)         | End-to-end testing framework.            |
 
 
 
