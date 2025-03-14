@@ -1,0 +1,27 @@
+name: Cypress E2E Tests
+
+on:
+  deployment_status:
+
+jobs:
+  cypress-run:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          wait-on: ${{ github.event.deployment_status.environment_url }}
+          wait-on-timeout: 120
+
+        env:
+          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+          CYPRESS_baseUrl: ${{ github.event.deployment_status.environment_url }}
