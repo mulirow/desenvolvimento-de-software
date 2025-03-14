@@ -12,7 +12,7 @@ export default function HomePage() {
       <div className="w-screen h-screen bg-zinc-300 relative p-4">
         <div className="relative inline-block">
           <button
-            className="min-w-[18.75rem] bg-white rounded-[0.625rem] shadow-md flex flex-col overflow-hidden p-2 
+            className="min-w-[18.75rem] bg-white rounded-[0.625rem] shadow-md flex flex-col overflow-hidden p-2
                      hover:shadow-lg active:shadow-sm transition-shadow"
             onClick={() => router.push("/editor")}
           >
@@ -23,8 +23,8 @@ export default function HomePage() {
           </button>
 
           <button
-            className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center text-lg 
-                     transition-colors cursor-pointer absolute bottom-[17.5px] right-[10px] 
+            className="bg-white text-black rounded-full w-7 h-7 flex items-center justify-center text-lg
+                     transition-colors cursor-pointer absolute bottom-[17.5px] right-[10px]
                      hover:bg-black/20 active:bg-black/40"
             onClick={(e) => {
               e.stopPropagation();
@@ -35,9 +35,9 @@ export default function HomePage() {
         </div>
 
         <button
-          className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center 
+          className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center
                          text-2xl shadow-md fixed bottom-6 right-6 transition-all cursor-pointer
-                         hover:w-[3.25rem] hover:h-[3.25rem] hover:text-[1.75rem] hover:bg-blue-600 
+                         hover:w-[3.25rem] hover:h-[3.25rem] hover:text-[1.75rem] hover:bg-blue-600
                          active:bg-blue-700"
         >
           +
