@@ -5,8 +5,17 @@ on:
 
 jobs:
   cypress-run:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
+
+    env:
+      CYPRESS_baseUrl: ${{ github.event.deployment_status.environment_url }}
+      GOOGLEAI_API_KEY: ${{ secrets.GOOGLEAI_API_KEY }}
+      LIVEBLOCKS_SECRET_KEY: ${{ secrets.LIVEBLOCKS_SECRET_KEY }}
+      NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
 
     steps:
       - name: Checkout code
@@ -27,10 +36,3 @@ jobs:
 
         env:
           BASE_URL: ${{ github.event.deployment_status.environment_url }}
-          CYPRESS_baseUrl: ${{ github.event.deployment_status.environment_url }}
-          GOOGLEAI_API_KEY: ${{ secrets.GOOGLEAI_API_KEY }}
-          LIVEBLOCKS_SECRET_KEY: ${{ secrets.LIVEBLOCKS_SECRET_KEY }}
-          NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY }}
-          MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
