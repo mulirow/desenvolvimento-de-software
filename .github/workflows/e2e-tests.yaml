@@ -16,6 +16,7 @@ jobs:
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
       NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
       NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      BASE_URL: ${{ github.event.deployment_status.environment_url }}
 
     steps:
       - name: Checkout code
@@ -27,12 +28,12 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Cypress run
+      - name: Start server and wait
         uses: cypress-io/github-action@v6
         with:
           start: npm start
-          wait-on: ${{ github.event.deployment_status.environment_url }}
-          wait-on-timeout: 120
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
 
-        env:
-          BASE_URL: ${{ github.event.deployment_status.environment_url }}
+      - name: Run Cypress tests
+        run: npm run test
