@@ -12,6 +12,8 @@
 
 🔹 [⚡ Usage Instructions](#usage-instructions)
 
+🔹 [🧪 Testing](#testing)
+
 🔹 [🏛️ Architectural Decision Records (ADR)](#architectural-decision-records-adr)
 
 🔹 [📚 Support Information](#support-information)
@@ -32,6 +34,7 @@ The project was developed using the following technologies:
 | ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)       | Database for storing application data.          |
 | ![Google AI Studio](https://img.shields.io/badge/Google%20AI%20Studio-4285F4?style=for-the-badge&logo=google&logoColor=white) | AI Platform providing suggestions, analysis, and revisions.  |
 | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)         | Platform for deployment and hosting.            |
+| ![Cypress](https://img.shields.io/badge/Cypress-058A5E?style=for-the-badge&logo=cypress&logoColor=white)         | End-to-end testing framework.            |
 
 
 
@@ -85,6 +88,34 @@ Before you begin, ensure you have the following installed:
 2.  **Access the application:**
 
     Open your web browser and navigate to `http://localhost:3000` (or the port specified in your terminal).
+
+## 🧪 Testing
+
+This project uses Cypress for end-to-end testing.
+
+1.  **Install Cypress dependencies (if not already installed):**
+
+    ```bash
+    npm install cypress --save-dev
+    ```
+
+2.  **Run Cypress:**
+
+    You can run Cypress in different modes:
+
+    *   **Open Cypress UI:** This opens the Cypress Test Runner, allowing you to run tests interactively.
+        ```bash
+        npm run cypress:open
+        ```
+
+    *   **Run Cypress in headless mode (for CI/CD):** This runs the tests in the command line without a UI.
+        ```bash
+        npm run cypress:run
+        ```
+
+3.  **Writing Tests:**
+
+    Cypress tests are located in the `cypress` directory.  Refer to the Cypress documentation for guidance on writing tests: [https://www.cypress.io/](https://www.cypress.io/)
 
 ## 🏛️ Architectural Decision Records (ADR)
 
