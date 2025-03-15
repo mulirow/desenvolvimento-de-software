@@ -1,0 +1,39 @@
+name: Cypress E2E Tests
+
+on:
+  deployment_status:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
+
+    env:
+      CYPRESS_baseUrl: ${{ github.event.deployment_status.environment_url }}
+      GOOGLEAI_API_KEY: ${{ secrets.GOOGLEAI_API_KEY }}
+      LIVEBLOCKS_SECRET_KEY: ${{ secrets.LIVEBLOCKS_SECRET_KEY }}
+      NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      BASE_URL: ${{ github.event.deployment_status.environment_url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Start server and wait
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
+
+      - name: Run Cypress tests
+        run: npm run test
