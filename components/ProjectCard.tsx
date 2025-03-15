@@ -17,7 +17,7 @@ export default function ProjectCard({ href, cardText }: ProjectCardProps) {
       >
         <div className="w-full h-[150px] bg-gray-300"></div>
         <div className="flex items-center justify-between p-2">
-          <div className="text-lg font-bold">{cardText}</div>
+          <div className="text-lg font-bold text-black">{cardText}</div>
         </div>
       </button>
 
