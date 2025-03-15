@@ -8,6 +8,8 @@ Cypress.Commands.add('login', (email, password) => {
       cy.get('input[name="password"]').type(password);
       cy.get('button[type="submit"]').click();
 
+      cy.wait(1000);
+
       cy.url().should('not.include', '/login');
 
       cy.get('nav').contains('Logout').should('be.visible');
