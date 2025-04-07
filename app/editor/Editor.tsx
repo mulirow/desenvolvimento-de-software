@@ -45,17 +45,26 @@ export function Editor({ onChange }: EditorProps) {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className="editor">
-        <RichTextPlugin
-          contentEditable={<ContentEditable className="ContentEditable" />}
-          placeholder={<div className="placeholder">Start typing here…</div>}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-        {onChange && <OnChangePlugin onChange={onChange} />}
-        <LiveblocksPlugin>
-          <Threads />
-          <FloatingToolbar />
-        </LiveblocksPlugin>
+      <div className="mx-auto w-full max-w-screen-lg p-4 sm:px-6 md:px-8">
+        <div className="relative bg-white border border-gray-300 rounded shadow min-h-[300px]">
+          <RichTextPlugin
+            contentEditable={
+              <ContentEditable className="min-h-[200px] w-full p-4 focus:outline-none" />
+            }
+            placeholder={
+              <div className="pointer-events-none absolute top-4 left-4 text-gray-400">
+                Start typing here...
+              </div>
+            }
+            ErrorBoundary={LexicalErrorBoundary}
+          />
+
+          {onChange && <OnChangePlugin onChange={onChange} />}
+          <LiveblocksPlugin>
+            <Threads />
+            <FloatingToolbar />
+          </LiveblocksPlugin>
+        </div>
       </div>
     </LexicalComposer>
   );
